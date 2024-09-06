@@ -56,10 +56,8 @@ spec:
             @{{ include "digger-backend.fullname" . }}-postgres:5432
             /postgres?sslmode=disable
         {{- else }}
-          value: >-
-            {{- $pg := .Values.digger.postgres }}
-            postgres://{{ $pg.user }}:$(POSTGRES_PASSWORD)
-            @{{ $pg.host }}:{{ $pg.port }}/{{ $pg.database }}?sslmode=disable
+          {{- $pg := .Values.digger.postgres }}
+          value: "postgres://{{ $pg.user }}:$(POSTGRES_PASSWORD)@{{ $pg.host }}:{{ $pg.port }}/{{ $pg.database }}?sslmode=disable"
         {{- end }}
         - name: ALLOW_DIRTY
           value: "{{ .Values.digger.postgres.allow_dirty }}"

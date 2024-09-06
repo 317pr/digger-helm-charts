@@ -103,7 +103,7 @@ digger:
 # configure this section if you want to deploy a postgres db
 # WARNING: use only for test purposes, no persistency has been configured
 postgres:
-  enabled: true
+  enabled: false
   image: postgres
   tag: "14"
   resources:
@@ -116,5 +116,4 @@ postgres:
   secret:
     useExistingSecret: true
     existingSecretName: "new-pg-creds"
-
     password: "password"
