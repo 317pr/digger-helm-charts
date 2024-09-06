@@ -57,7 +57,7 @@ spec:
             /postgres?sslmode=disable
         {{- else }}
           value: >-
-            {{ $pg := .Values.digger.postgres }}
+            {{- $pg := .Values.digger.postgres }}
             postgres://{{ $pg.user }}:$(POSTGRES_PASSWORD)
             @{{ $pg.host }}:{{ $pg.port }}/{{ $pg.database }}?sslmode=disable
         {{- end }}
